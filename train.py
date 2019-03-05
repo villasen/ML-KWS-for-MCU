@@ -237,9 +237,9 @@ def main(_):
             dropout_prob: 1.0
         })
     train_writer.add_summary(train_summary, training_step)
-    tf.logging.info('Step #%d: rate %f, accuracy %.2f%%, cross entropy %f' %
+    """tf.logging.info('Step #%d: rate %f, accuracy %.2f%%, cross entropy %f' %
                     (training_step, learning_rate_value, train_accuracy * 100,
-                     cross_entropy_value))
+                     cross_entropy_value))"""
     is_last_step = (training_step == training_steps_max)
     if (training_step % FLAGS.eval_step_interval) == 0 or is_last_step:
       set_size = audio_processor.set_size('validation')
