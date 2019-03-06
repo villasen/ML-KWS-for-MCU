@@ -105,6 +105,7 @@ def run_quant_inference(wanted_words, sample_rate, clip_duration_ms,
     var_values = np.round(var_values*2**dec_bits)
     var_name = var_name.replace('/','_')
     var_name = var_name.replace(':','_')
+    var_name = var_name.replace('-','_')
     with open('weights.h','a') as f:
       f.write('#define '+var_name+' {')
     if(len(var_values.shape)>2): #convolution layer weights
