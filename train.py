@@ -378,22 +378,22 @@ if __name__ == '__main__':
   parser.add_argument(
       '--window_size_ms',
       type=float,
-      default=30.0,
+      default=40.0,
       help='How long each spectrogram timeslice is',)
   parser.add_argument(
       '--window_stride_ms',
       type=float,
-      default=10.0,
+      default=20.0,
       help='How long each spectrogram timeslice is',)
   parser.add_argument(
       '--dct_coefficient_count',
       type=int,
-      default=40,
+      default=10,
       help='How many bins to use for the MFCC fingerprint',)
   parser.add_argument(
       '--how_many_training_steps',
       type=str,
-      default='15000,3000',
+      default='5000,3000,2000',
       help='How many training loops to run',)
   parser.add_argument(
       '--eval_step_interval',
@@ -403,7 +403,7 @@ if __name__ == '__main__':
   parser.add_argument(
       '--learning_rate',
       type=str,
-      default='0.001,0.0001',
+      default='0.0005,0.0001,0.00002',
       help='How large a learning rate to use when training.')
   parser.add_argument(
       '--batch_size',
@@ -438,13 +438,13 @@ if __name__ == '__main__':
   parser.add_argument(
       '--model_architecture',
       type=str,
-      default='dnn',
+      default='ds_cnn',
       help='What model architecture to use')
   parser.add_argument(
       '--model_size_info',
       type=int,
       nargs="+",
-      default=[128,128,128],
+      default=[5,64,10,4,2,2,64,3,3,1,1,64,3,3,1,1,64,3,3,1,1,64,3,3,1,1],
       help='Model dimensions - different for various models')
   parser.add_argument(
       '--check_nans',
