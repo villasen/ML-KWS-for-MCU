@@ -120,6 +120,7 @@ def run_quant_inference(wanted_words, sample_rate, clip_duration_ms,
     # update the weights in tensorflow graph for quantizing the activations
     var_values = sess.run(tf.assign(v,var_values))
     print(var_name+' number of wts/bias: '+str(var_values.shape)+\
+            ' int bits: '+str(int_bits)+\
             ' dec bits: '+str(dec_bits)+\
             ' max: ('+str(var_values.max())+','+str(max_value)+')'+\
             ' min: ('+str(var_values.min())+','+str(min_value)+')')
@@ -302,7 +303,7 @@ if __name__ == '__main__':
       '--act_max',
       type=float,
       nargs="+",
-      default=[32,0,0,0,0,0,0,0,0,0,0,0],
+      default=[32,32,32,32,32,32,32,32,32,32,32,32],
       help='activations max')
 
   FLAGS, unparsed = parser.parse_known_args()
