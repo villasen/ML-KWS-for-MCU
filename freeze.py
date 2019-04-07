@@ -180,7 +180,7 @@ if __name__ == '__main__':
       '--model_size_info',
       type=int,
       nargs="+",
-      default=[5,64,10,4,2,2,64,3,3,1,1,64,3,3,1,1,64,3,3,1,1,64,3,3,1,1],
+      default=[5,172,10,4,2,1,172,3,3,2,2,172,3,3,1,1,172,3,3,1,1,172,3,3,1,1],
       help='Model dimensions - different for various models')
   parser.add_argument(
       '--wanted_words',
