@@ -15,3 +15,6 @@
 .vscode
 
 .DS_Store
+Deployment/Source/NN/DS_CNN/old_ds_cnn_weights.h
+Deployment/Source/NN/DS_CNN/ds_cnn_weights.h
+Deployment/Source/NN/DS_CNN/ds_cnn_weights.h
