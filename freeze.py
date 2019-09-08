@@ -121,6 +121,11 @@ def main(_):
                          FLAGS.window_size_ms, FLAGS.window_stride_ms,
                          FLAGS.dct_coefficient_count, FLAGS.model_architecture,
                          FLAGS.model_size_info)
+
+  if FLAGS.quantize:
+    tf.contrib.quantize.create_eval_graph()
+  models.load_variables_from_checkpoint(sess, FLAGS.start_checkpoint)
+
   models.load_variables_from_checkpoint(sess, FLAGS.checkpoint)
 
   # Turn all the variables into inline constants inside the graph and save it.
@@ -182,6 +187,13 @@ if __name__ == '__main__':
       nargs="+",
       default=[5,64,10,4,2,2,64,3,3,1,1,64,3,3,1,1,64,3,3,1,1,64,3,3,1,1],
       help='Model dimensions - different for various models')
+
+  parser.add_argument(
+      '--quantize',
+      type=bool,
+      default=False,
+      help='Whether to train the model for eight-bit deployment')
+
   parser.add_argument(
       '--wanted_words',
       type=str,
