@@ -124,8 +124,7 @@ def main(_):
 
   if FLAGS.quantize:
     tf.contrib.quantize.create_eval_graph()
-  models.load_variables_from_checkpoint(sess, FLAGS.start_checkpoint)
-
+  
   models.load_variables_from_checkpoint(sess, FLAGS.checkpoint)
 
   # Turn all the variables into inline constants inside the graph and save it.
