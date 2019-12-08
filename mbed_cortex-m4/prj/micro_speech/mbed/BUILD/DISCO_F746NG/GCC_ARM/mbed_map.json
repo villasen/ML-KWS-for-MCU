@@ -1,0 +1,230 @@
+[
+    {
+        "module": "AUDIO_DISCO_F746NG/AUDIO_DISCO_F746NG.o", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 52, 
+            ".bss": 0, 
+            ".data": 0, 
+            ".bss-delta": 0, 
+            ".text": 52
+        }
+    }, 
+    {
+        "module": "BSP_DISCO_F746NG/Drivers", 
+        "size": {
+            ".data-delta": 50, 
+            ".text-delta": 6396, 
+            ".bss": 1288, 
+            ".data": 50, 
+            ".bss-delta": 1288, 
+            ".text": 6396
+        }
+    }, 
+    {
+        "module": "BSP_DISCO_F746NG/Utilities", 
+        "size": {
+            ".data-delta": 8, 
+            ".text-delta": 0, 
+            ".bss": 0, 
+            ".data": 8, 
+            ".bss-delta": 0, 
+            ".text": 0
+        }
+    }, 
+    {
+        "module": "LCD_DISCO_F746NG/LCD_DISCO_F746NG.o", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 140, 
+            ".bss": 0, 
+            ".data": 0, 
+            ".bss-delta": 0, 
+            ".text": 140
+        }
+    }, 
+    {
+        "module": "SDRAM_DISCO_F746NG/SDRAM_DISCO_F746NG.o", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 24, 
+            ".bss": 0, 
+            ".data": 0, 
+            ".bss-delta": 0, 
+            ".text": 24
+        }
+    }, 
+    {
+        "module": "[fill]", 
+        "size": {
+            ".data-delta": 15, 
+            ".text-delta": 256, 
+            ".bss": 33, 
+            ".data": 15, 
+            ".bss-delta": 33, 
+            ".text": 256
+        }
+    }, 
+    {
+        "module": "[lib]/c.a", 
+        "size": {
+            ".data-delta": 2472, 
+            ".text-delta": 34388, 
+            ".bss": 89, 
+            ".data": 2472, 
+            ".bss-delta": 89, 
+            ".text": 34388
+        }
+    }, 
+    {
+        "module": "[lib]/gcc.a", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 3608, 
+            ".bss": 0, 
+            ".data": 0, 
+            ".bss-delta": 0, 
+            ".text": 3608
+        }
+    }, 
+    {
+        "module": "[lib]/m.a", 
+        "size": {
+            ".data-delta": 1, 
+            ".text-delta": 11668, 
+            ".bss": 0, 
+            ".data": 1, 
+            ".bss-delta": 0, 
+            ".text": 11668
+        }
+    }, 
+    {
+        "module": "[lib]/misc", 
+        "size": {
+            ".data-delta": 4, 
+            ".text-delta": 180, 
+            ".bss": 28, 
+            ".data": 4, 
+            ".bss-delta": 28, 
+            ".text": 180
+        }
+    }, 
+    {
+        "module": "[lib]/nosys.a", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 32, 
+            ".bss": 0, 
+            ".data": 0, 
+            ".bss-delta": 0, 
+            ".text": 32
+        }
+    }, 
+    {
+        "module": "mbed-os/components", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 210, 
+            ".bss": 4, 
+            ".data": 0, 
+            ".bss-delta": 4, 
+            ".text": 210
+        }
+    }, 
+    {
+        "module": "mbed-os/drivers", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 1156, 
+            ".bss": 0, 
+            ".data": 0, 
+            ".bss-delta": 0, 
+            ".text": 1156
+        }
+    }, 
+    {
+        "module": "mbed-os/events", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 1474, 
+            ".bss": 3108, 
+            ".data": 0, 
+            ".bss-delta": 3108, 
+            ".text": 1474
+        }
+    }, 
+    {
+        "module": "mbed-os/features", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 1984, 
+            ".bss": 12724, 
+            ".data": 0, 
+            ".bss-delta": 12724, 
+            ".text": 1984
+        }
+    }, 
+    {
+        "module": "mbed-os/hal", 
+        "size": {
+            ".data-delta": 8, 
+            ".text-delta": 1686, 
+            ".bss": 130, 
+            ".data": 8, 
+            ".bss-delta": 130, 
+            ".text": 1686
+        }
+    }, 
+    {
+        "module": "mbed-os/platform", 
+        "size": {
+            ".data-delta": 260, 
+            ".text-delta": 5582, 
+            ".bss": 372, 
+            ".data": 260, 
+            ".bss-delta": 372, 
+            ".text": 5582
+        }
+    }, 
+    {
+        "module": "mbed-os/rtos", 
+        "size": {
+            ".data-delta": 168, 
+            ".text-delta": 10536, 
+            ".bss": 67676, 
+            ".data": 168, 
+            ".bss-delta": 67676, 
+            ".text": 10536
+        }
+    }, 
+    {
+        "module": "mbed-os/targets", 
+        "size": {
+            ".data-delta": 5, 
+            ".text-delta": 19614, 
+            ".bss": 1164, 
+            ".data": 5, 
+            ".bss-delta": 1164, 
+            ".text": 19614
+        }
+    }, 
+    {
+        "module": "tensorflow/lite", 
+        "size": {
+            ".data-delta": 113, 
+            ".text-delta": 25754, 
+            ".bss": 43024, 
+            ".data": 113, 
+            ".bss-delta": 43024, 
+            ".text": 25754
+        }
+    }, 
+    {
+        "summary": {
+            "static_ram": 132744, 
+            "total_flash_delta": 127844, 
+            "static_ram_delta": 132744, 
+            "total_flash": 127844
+        }
+    }
+]
