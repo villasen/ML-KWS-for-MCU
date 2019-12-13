@@ -29,16 +29,16 @@ void RespondToCommand(tflite::ErrorReporter *error_reporter,
                            current_time);
     if (*found_command == 'y') {
       lcd.Clear(0xFF0F9D58);
-      lcd.DisplayStringAt(0, LINE(5), (uint8_t *)"Heard yes!", CENTER_MODE);
+      lcd.DisplayStringAt(0, LINE(5), (uint8_t *)"Martin Heard yes!", CENTER_MODE);
     } else if (*found_command == 'n') {
       lcd.Clear(0xFFDB4437);
-      lcd.DisplayStringAt(0, LINE(5), (uint8_t *)"Heard no :(", CENTER_MODE);
+      lcd.DisplayStringAt(0, LINE(5), (uint8_t *)"Martin Heard no :(", CENTER_MODE);
     } else if (*found_command == 'u') {
       lcd.Clear(0xFFF4B400);
-      lcd.DisplayStringAt(0, LINE(5), (uint8_t *)"Heard unknown", CENTER_MODE);
+      lcd.DisplayStringAt(0, LINE(5), (uint8_t *)"Martin Heard unknown", CENTER_MODE);
     } else {
       lcd.Clear(0xFF4285F4);
-      lcd.DisplayStringAt(0, LINE(5), (uint8_t *)"Heard silence", CENTER_MODE);
+      lcd.DisplayStringAt(0, LINE(5), (uint8_t *)"Martin Heard silence", CENTER_MODE);
     }
   }
 }
