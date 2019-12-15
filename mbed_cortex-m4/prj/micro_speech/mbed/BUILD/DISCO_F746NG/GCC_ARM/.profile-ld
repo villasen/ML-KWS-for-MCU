@@ -64,7 +64,11 @@
         "DEVICE_USTICKER=1", 
         "DEVICE_WATCHDOG=1", 
         "EXTRA_IDLE_STACK_REQUIRED", 
+<<<<<<< HEAD
         "MBED_BUILD_TIMESTAMP=1576211573.5", 
+=======
+        "MBED_BUILD_TIMESTAMP=1576213888.49", 
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         "MBED_TICKLESS", 
         "TARGET_CORTEX", 
         "TARGET_CORTEX_M", 

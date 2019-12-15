@@ -18,7 +18,11 @@
             ".bss": 1288, 
             ".data": 50, 
             ".bss-delta": 0, 
+<<<<<<< HEAD
             ".text": 6396
+=======
+            ".text": 6380
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }, 
     {
@@ -60,9 +64,15 @@
             ".data-delta": 0, 
             ".text-delta": 0, 
             ".bss": 33, 
+<<<<<<< HEAD
             ".data": 15, 
             ".bss-delta": 0, 
             ".text": 256
+=======
+            ".data": 19, 
+            ".bss-delta": 0, 
+            ".text": 258
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }, 
     {
@@ -73,7 +83,11 @@
             ".bss": 89, 
             ".data": 2472, 
             ".bss-delta": 0, 
+<<<<<<< HEAD
             ".text": 34388
+=======
+            ".text": 35220
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }, 
     {
@@ -84,7 +98,7 @@
             ".bss": 0, 
             ".data": 0, 
             ".bss-delta": 0, 
-            ".text": 3608
+            ".text": 3596
         }
     }, 
     {
@@ -95,7 +109,7 @@
             ".bss": 0, 
             ".data": 1, 
             ".bss-delta": 0, 
-            ".text": 11668
+            ".text": 11840
         }
     }, 
     {
@@ -121,6 +135,17 @@
         }
     }, 
     {
+        "module": "[lib]/stdc++.a", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 0, 
+            ".bss": 16, 
+            ".data": 0, 
+            ".bss-delta": 0, 
+            ".text": 40
+        }
+    }, 
+    {
         "module": "mbed-os/components", 
         "size": {
             ".data-delta": 0, 
@@ -139,7 +164,7 @@
             ".bss": 0, 
             ".data": 0, 
             ".bss-delta": 0, 
-            ".text": 1156
+            ".text": 1152
         }
     }, 
     {
@@ -150,7 +175,11 @@
             ".bss": 3108, 
             ".data": 0, 
             ".bss-delta": 0, 
+<<<<<<< HEAD
             ".text": 1474
+=======
+            ".text": 1460
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }, 
     {
@@ -161,7 +190,11 @@
             ".bss": 12724, 
             ".data": 0, 
             ".bss-delta": 0, 
+<<<<<<< HEAD
             ".text": 1984
+=======
+            ".text": 1994
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }, 
     {
@@ -172,7 +205,11 @@
             ".bss": 130, 
             ".data": 8, 
             ".bss-delta": 0, 
+<<<<<<< HEAD
             ".text": 1686
+=======
+            ".text": 1704
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }, 
     {
@@ -183,7 +220,11 @@
             ".bss": 372, 
             ".data": 260, 
             ".bss-delta": 0, 
+<<<<<<< HEAD
             ".text": 5582
+=======
+            ".text": 5604
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }, 
     {
@@ -194,7 +235,11 @@
             ".bss": 67676, 
             ".data": 168, 
             ".bss-delta": 0, 
+<<<<<<< HEAD
             ".text": 10536
+=======
+            ".text": 10540
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }, 
     {
@@ -205,7 +250,11 @@
             ".bss": 1164, 
             ".data": 5, 
             ".bss-delta": 0, 
+<<<<<<< HEAD
             ".text": 19614
+=======
+            ".text": 19742
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }, 
     {
@@ -213,18 +262,32 @@
         "size": {
             ".data-delta": 0, 
             ".text-delta": 0, 
+<<<<<<< HEAD
             ".bss": 43024, 
             ".data": 113, 
             ".bss-delta": 0, 
             ".text": 25754
+=======
+            ".bss": 32424, 
+            ".data": 117, 
+            ".bss-delta": 0, 
+            ".text": 28664
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }, 
     {
         "summary": {
+<<<<<<< HEAD
             "static_ram": 132744, 
             "total_flash_delta": 0, 
             "static_ram_delta": 0, 
             "total_flash": 127844
+=======
+            "static_ram": 122168, 
+            "total_flash_delta": 0, 
+            "static_ram_delta": 0, 
+            "total_flash": 131944
+>>>>>>> 3e754290c3afd391f470ac5531d1e6f87166decb
         }
     }
 ]
