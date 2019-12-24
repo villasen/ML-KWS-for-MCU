@@ -791,7 +791,6 @@ TfLiteStatus ParseOpData(const Operator* op, BuiltinOperator op_type,
     case BuiltinOperator_ROUND:
     case BuiltinOperator_RSQRT:
     case BuiltinOperator_SELECT:
-    case BuiltinOperator_SELECT_V2:
     case BuiltinOperator_SIN:
     case BuiltinOperator_SLICE:
     case BuiltinOperator_SPACE_TO_BATCH_ND:

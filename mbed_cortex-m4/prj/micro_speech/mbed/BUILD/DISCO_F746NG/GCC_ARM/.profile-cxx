@@ -32,7 +32,9 @@
         "-mfpu=fpv5-sp-d16", 
         "-mthumb"
     ], 
-    "macros": [], 
+    "macros": [
+        "TF_LITE_STATIC_MEMORY"
+    ], 
     "symbols": [
         "ARM_MATH_CM7", 
         "COMPONENT_FLASHIAP=1", 
@@ -90,6 +92,7 @@
         "TARGET_STM32F746NG", 
         "TARGET_STM32F746xG", 
         "TARGET_STM_EMAC", 
+        "TF_LITE_STATIC_MEMORY", 
         "TOOLCHAIN_GCC", 
         "TOOLCHAIN_GCC_ARM", 
         "TRANSACTION_QUEUE_SIZE_SPI=2", 
