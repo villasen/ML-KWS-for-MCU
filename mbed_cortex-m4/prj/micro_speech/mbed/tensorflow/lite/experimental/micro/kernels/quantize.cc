@@ -43,11 +43,14 @@ TfLiteStatus Prepare(TfLiteContext* context, TfLiteNode* node) {
                     kTfLiteAffineQuantization);
   const auto* affine_quantization =
       reinterpret_cast<TfLiteAffineQuantization*>(output->quantization.params);
+
   TF_LITE_ENSURE(context, affine_quantization);
   TF_LITE_ENSURE(context, affine_quantization->scale);
   TF_LITE_ENSURE(context, affine_quantization->scale->size == 1);
 
   TF_LITE_ENSURE(context, input->type == kTfLiteFloat32);
+
+  //TF_LITE_ENSURE(context, input->type == kTfLiteInt8);  // test 
   TF_LITE_ENSURE(context,
                  output->type == kTfLiteUInt8 || output->type == kTfLiteInt8);
 
@@ -86,11 +89,14 @@ TfLiteStatus Eval(TfLiteContext* context, TfLiteNode* node) {
 // This Op (QUANTIZE) quantizes the input and produces quantized output.
 // AffineQuantize takes scale and zero point and quantizes the float value to
 // quantized output, in int8 or uint8 format.
+
+
 TfLiteRegistration* Register_QUANTIZE() {
   static TfLiteRegistration r = {quantize::Init, quantize::Free,
                                  quantize::Prepare, quantize::Eval};
   return &r;
 }
+
 
 }  // namespace micro
 }  // namespace ops

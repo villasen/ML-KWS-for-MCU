@@ -15,9 +15,13 @@ limitations under the License.
 
 #include "tensorflow/lite/experimental/micro/examples/micro_speech/micro_features/micro_model_settings.h"
 
+
+
+
 const char* kCategoryLabels[kCategoryCount] = {
     "silence",
     "unknown",
-    "yes",
-    "no",
+    "footsteps",
+    "glassbreaking",
 };
+

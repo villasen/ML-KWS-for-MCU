@@ -23,6 +23,6 @@ void setup();
 // Runs one iteration of data gathering and inference. This should be called
 // repeatedly from the application code. The name needs to be loop() for Arduino
 // compatibility.
-void loop();
+//void loop();
 
 #endif  // TENSORFLOW_LITE_EXPERIMENTAL_MICRO_EXAMPLES_MICRO_SPEECH_MAIN_FUNCTIONS_H_

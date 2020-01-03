@@ -14,22 +14,18 @@ limitations under the License.
 ==============================================================================*/
 
 #include "tensorflow/lite/experimental/micro/examples/micro_speech/main_functions.h"
-
-#include "tensorflow/lite/experimental/micro/examples/micro_speech/audio_provider.h"
-#include "tensorflow/lite/experimental/micro/examples/micro_speech/command_responder.h"
+//#include "tensorflow/lite/experimental/micro/examples/micro_speech/command_responder.h"
 #include "tensorflow/lite/experimental/micro/examples/micro_speech/feature_provider.h"
-#include "tensorflow/lite/experimental/micro/examples/micro_speech/micro_features/micro_model_settings.h"
 #include "tensorflow/lite/experimental/micro/examples/micro_speech/micro_features/tiny_conv_micro_features_model_data.h"
 #include "tensorflow/lite/experimental/micro/examples/micro_speech/recognize_commands.h"
 #include "tensorflow/lite/experimental/micro/kernels/micro_ops.h"
 #include "tensorflow/lite/experimental/micro/micro_error_reporter.h"
 #include "tensorflow/lite/experimental/micro/micro_interpreter.h"
 #include "tensorflow/lite/experimental/micro/micro_mutable_op_resolver.h"
-#include "tensorflow/lite/schema/schema_generated.h"
 #include "tensorflow/lite/version.h"
 #include "tensorflow/lite/experimental/micro/examples/micro_speech/micro_features/no_micro_features_data.h"
 #include "tensorflow/lite/experimental/micro/examples/micro_speech/micro_features/yes_micro_features_data.h"
-#include "tensorflow/lite/experimental/micro/testing/micro_test.h"
+
 
 
 
@@ -37,7 +33,7 @@ limitations under the License.
 namespace {
 tflite::ErrorReporter* error_reporter = nullptr;
 const tflite::Model* model = nullptr;
-tflite::MicroInterpreter* interpreter = nullptr;
+//tflite::MicroInterpreter* interpreter = nullptr;
 TfLiteTensor* model_input = nullptr;
 FeatureProvider* feature_provider = nullptr;
 RecognizeCommands* recognizer = nullptr;
@@ -46,13 +42,11 @@ int32_t previous_time = 0;
 // Create an area of memory to use for input, output, and intermediate arrays.
 // The size of this will depend on the model you're using, and may need to be
 // determined by experimentation.
-constexpr int kTensorArenaSize = 10 * 1024;
+constexpr int kTensorArenaSize = 100 * 1024;
 uint8_t tensor_arena[kTensorArenaSize];
 }  // namespace
 
 
-
-// The name of this function is important for Arduino compatibility.
 void setup() {
   // Set up logging. Google style is to avoid globals or statics because of
   // lifetime uncertainty, but since this has a trivial destructor it's okay.
@@ -77,17 +71,53 @@ void setup() {
   // incur some penalty in code space for op implementations that are not
   // needed by this graph.
   //
-  // tflite::ops::micro::AllOpsResolver resolver;
+ //  tflite::ops::micro::AllOpsResolver resolver;
   // NOLINTNEXTLINE(runtime-global-variables)
   static tflite::MicroMutableOpResolver micro_mutable_op_resolver;
+
+  micro_mutable_op_resolver.AddBuiltin(
+      tflite::BuiltinOperator_QUANTIZE,
+      tflite::ops::micro::Register_QUANTIZE());
+
+
   micro_mutable_op_resolver.AddBuiltin(
       tflite::BuiltinOperator_DEPTHWISE_CONV_2D,
-      tflite::ops::micro::Register_DEPTHWISE_CONV_2D());
+      tflite::ops::micro::Register_DEPTHWISE_CONV_2D(), 1, 3);
+
   micro_mutable_op_resolver.AddBuiltin(
       tflite::BuiltinOperator_FULLY_CONNECTED,
-      tflite::ops::micro::Register_FULLY_CONNECTED());
-  micro_mutable_op_resolver.AddBuiltin(tflite::BuiltinOperator_SOFTMAX,
-                                       tflite::ops::micro::Register_SOFTMAX());
+      tflite::ops::micro::Register_FULLY_CONNECTED(),1 , 4);
+
+  micro_mutable_op_resolver.AddBuiltin(
+      tflite::BuiltinOperator_SOFTMAX,
+      tflite::ops::micro::Register_SOFTMAX(), 1, 2);
+
+
+
+  // micro_mutable_op_resolver.AddBuiltin(
+ //     tflite::BuiltinOperator_MAX_POOL_2D,
+ //     tflite::ops::micro::Register_MAX_POOL_2D());     
+
+   micro_mutable_op_resolver.AddBuiltin(
+      tflite::BuiltinOperator_CONV_2D,
+      tflite::ops::micro::Register_CONV_2D(), 1, 3);  
+
+   micro_mutable_op_resolver.AddBuiltin(
+      tflite::BuiltinOperator_AVERAGE_POOL_2D,
+      tflite::ops::micro::Register_AVERAGE_POOL_2D(), 1, 2);   
+
+  micro_mutable_op_resolver.AddBuiltin(
+      tflite::BuiltinOperator_RELU,
+      tflite::ops::micro::Register_RELU()); 
+
+
+
+
+  micro_mutable_op_resolver.AddBuiltin(
+      tflite::BuiltinOperator_DEQUANTIZE,
+      tflite::ops::micro::Register_DEQUANTIZE(), 1, 2); 
+
+
 
   // Build an interpreter to run the model with.
  // static tflite::MicroInterpreter static_interpreter(
@@ -105,6 +135,7 @@ void setup() {
 
   // Allocate memory from the tensor_arena for the model's tensors.
   TfLiteStatus allocate_status = interpreter.AllocateTensors();
+
   if (allocate_status != kTfLiteOk) {
     error_reporter->Report("AllocateTensors() failed");
     return;
@@ -112,6 +143,13 @@ void setup() {
 
   // Get information about the memory area to use for the model's input.
   model_input = interpreter.input(0);
+  error_reporter->Report("model dim size=%d", model_input->dims->size);
+  error_reporter->Report("model dim data0=%d", model_input->dims->data[0]);
+  error_reporter->Report("model dim data1=%d", model_input->dims->data[1]);
+  error_reporter->Report("model dim data2=%d", model_input->dims->data[2]);
+  error_reporter->Report("model type=%d", model_input->type);
+
+
   if ((model_input->dims->size != 4) || (model_input->dims->data[0] != 1) ||
       (model_input->dims->data[1] != kFeatureSliceCount) ||
       (model_input->dims->data[2] != kFeatureSliceSize) ||
@@ -120,27 +158,29 @@ void setup() {
     return;
   }
 
- 
- // Martin:  This will not be needed for offline inference
 
-
-// Copy a spectrogram created from a .wav audio file of someone saying "Yes",
+// Copy a spectrogram created from a .wav audio file 
   // into the memory area used for the input.
-  //const uint8_t* features_data = g_yes_micro_f2e59fea_nohash_1_data;
-  const uint8_t* features_data = g_no_micro_f9643d42_nohash_4_data;
+  const uint8_t* features_data = g_yes_micro_f2e59fea_nohash_1_data;
+  error_reporter->Report("getting input data");
+  //const uint8_t* features_data = g_no_micro_f9643d42_nohash_4_data;
   for (int i = 0; i < model_input->bytes; ++i) {
     model_input->data.uint8[i] = features_data[i];
   }
 
+  error_reporter->Report("started invoking");
   // Run the model on this input and make sure it succeeds.
   TfLiteStatus invoke_status = interpreter.Invoke();
+  error_reporter->Report("finished invoking");
   if (invoke_status != kTfLiteOk) {
     error_reporter->Report("Invoke failed\n");
   }
-
+  
   // Get the output from the model, and make sure it's the expected size and
   // type.
   TfLiteTensor* output = interpreter.output(0);
+  error_reporter->Report("output: %d", output->data.uint8[0]);
+ // error_reporter->Report("output: %d", output->quantization);
 
   // There are four possible classes in the output, each with a score.
   const int kSilenceIndex = 0;
@@ -158,17 +198,17 @@ void setup() {
 
 //error_reporter->Report("Houston Heard %s (%d) @%dms", found_command, score,
 //                           current_time);
-error_reporter->Report("Softmax: silence=%d, unknown=%d, yes=%d, no=%d", silence_score, unknown_score, yes_score, no_score);
+error_reporter->Report("Softmax: silence=%d, unknown=%d, footsteps=%d, glassbreaking=%d", silence_score, unknown_score, yes_score, no_score);
 
 
 }
 
 
-void loop() {
+//void loop() {
 
 // nothing to do here
 
-}
+//}
 
  
 

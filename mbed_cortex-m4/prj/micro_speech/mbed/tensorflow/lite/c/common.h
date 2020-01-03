@@ -326,7 +326,7 @@ typedef struct {
   int dim_metadata_size;
 } TfLiteSparsity;
 
-// An tensor in the interpreter system which is a wrapper around a buffer of
+// A tensor in the interpreter system which is a wrapper around a buffer of
 // data including a dimensionality (or NULL if not currently defined).
 typedef struct {
   // The data type specification for data stored in `data`. This affects

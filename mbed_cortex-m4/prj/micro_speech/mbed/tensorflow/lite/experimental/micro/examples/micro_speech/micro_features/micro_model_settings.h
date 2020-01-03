@@ -27,8 +27,10 @@ constexpr int kAudioSampleFrequency = 16000;
 
 // All of these values are derived from the values used during model training,
 // if you change your model you'll need to update these constants.
-constexpr int kFeatureSliceSize = 40;
-constexpr int kFeatureSliceCount = 49;
+constexpr int kFeatureSliceSize = 40;  // origianl - time windows in one second
+//constexpr int kFeatureSliceSize = 51; // from colab script
+constexpr int kFeatureSliceCount = 49;  // original - frequency bin count per time slice
+//constexpr int kFeatureSliceCount = 10;   // from colab script
 constexpr int kFeatureElementCount = (kFeatureSliceSize * kFeatureSliceCount);
 constexpr int kFeatureSliceStrideMs = 20;
 constexpr int kFeatureSliceDurationMs = 30;
