@@ -23,20 +23,20 @@ limitations under the License.
 // frequency information. This has to be a power of two, and since we're dealing
 // with 30ms of 16KHz inputs, which means 480 samples, this is the next value.
 constexpr int kMaxAudioSampleSize = 512;
-constexpr int kAudioSampleFrequency = 16000;
+constexpr int kAudioSampleFrequency = 16000;  // sample rate
 
 // All of these values are derived from the values used during model training,
 // if you change your model you'll need to update these constants.
-constexpr int kFeatureSliceSize = 40;  // origianl - time windows in one second
+constexpr int kFeatureSliceSize = 10;  // origianl - bin count
 //constexpr int kFeatureSliceSize = 51; // from colab script
-constexpr int kFeatureSliceCount = 49;  // original - frequency bin count per time slice
+constexpr int kFeatureSliceCount = 49;  // original -number of time slices in one second
 //constexpr int kFeatureSliceCount = 10;   // from colab script
 constexpr int kFeatureElementCount = (kFeatureSliceSize * kFeatureSliceCount);
-constexpr int kFeatureSliceStrideMs = 20;
+constexpr int kFeatureSliceStrideMs = 20;  
 constexpr int kFeatureSliceDurationMs = 30;
 
-constexpr int kCategoryCount = 4;
-constexpr int kSilenceIndex = 0;
+constexpr int kCategoryCount = 8;  // number of labels 
+constexpr int kSilenceIndex = 0;  
 constexpr int kUnknownIndex = 1;
 extern const char* kCategoryLabels[kCategoryCount];
 

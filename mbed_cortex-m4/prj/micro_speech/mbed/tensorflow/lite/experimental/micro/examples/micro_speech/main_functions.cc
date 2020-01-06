@@ -185,20 +185,29 @@ void setup() {
   // There are four possible classes in the output, each with a score.
   const int kSilenceIndex = 0;
   const int kUnknownIndex = 1;
-  const int kYesIndex = 2;
-  const int kNoIndex = 3;
+  const int kFootStepsIndex = 2;
+  const int kGlassBreakingIndex = 3;
+  const int kDoorKnockIndex = 4;
+  const int kClappingIndex = 5;
+  const int kDogIndex = 6;
+  const int kClockAlarmIndex = 7;
 
   // Make sure that the expected "Yes" score is higher than the other classes.
   uint8_t silence_score = output->data.uint8[kSilenceIndex];
   uint8_t unknown_score = output->data.uint8[kUnknownIndex];
-  uint8_t yes_score = output->data.uint8[kYesIndex];
-  uint8_t no_score = output->data.uint8[kNoIndex];
-
+  uint8_t footsteps_score = output->data.uint8[kFootStepsIndex];
+  uint8_t glassbreaking_score = output->data.uint8[kGlassBreakingIndex];
+  uint8_t doorknock_score = output->data.uint8[kDoorKnockIndex];
+  uint8_t clapping_score = output->data.uint8[kClappingIndex];
+  uint8_t dog_score = output->data.uint8[kDogIndex];
+  uint8_t clock_alarm_score = output->data.uint8[kClockAlarmIndex];
 
 
 //error_reporter->Report("Houston Heard %s (%d) @%dms", found_command, score,
 //                           current_time);
-error_reporter->Report("Softmax: silence=%d, unknown=%d, footsteps=%d, glassbreaking=%d", silence_score, unknown_score, yes_score, no_score);
+
+error_reporter->Report("Softmax: silence=%d, unknown=%d, footsteps=%d, glassbreaking=%d, door_knock=%d, clapping=%d, dog=%d, clock_alarm=%d", 
+silence_score, unknown_score, footsteps_score, glassbreaking_score, doorknock_score, clapping_score, dog_score, clock_alarm_score);
 
 
 }
@@ -211,7 +220,5 @@ error_reporter->Report("Softmax: silence=%d, unknown=%d, footsteps=%d, glassbrea
 //}
 
  
-
-
 
 

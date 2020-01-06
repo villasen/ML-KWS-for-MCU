@@ -23,5 +23,11 @@ const char* kCategoryLabels[kCategoryCount] = {
     "unknown",
     "footsteps",
     "glassbreaking",
+    "door_knock",
+    "clapping",
+    "dog",
+    "clock_alarm"
 };
+
+
 
